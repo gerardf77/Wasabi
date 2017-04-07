@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+I
+<html data-ng-app="toDoApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Angular OS Token-based Authentication using Asp.net Identity and Asp.net web API</title>
+    <link href="/Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("My Todo List", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+
+    @RenderBody()
+
+    <script type="text/javascript" src="/Scripts/angular/lib/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="/Scripts/angular/lib/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/Scripts/angular/lib/angular.min.js"></script>
+    <script type="text/javascript" src="/Scripts/angular/lib/angular-resource.js"></script>
+    <script type="text/javascript" src="/Scripts/angular/lib/angular-ui-router.min.js"></script>
+    <script type="text/javascript" src="/Scripts/angular/lib/ngGeolocation.min.js"></script>
+    <script type="text/javascript" src="/Scripts/angular/app.js"></script>
+    <script type="text/javascript" src="/Scripts/angular/Auth/BearerAuthInterceptor.js"></script>
+    <script type="text/javascript" src="/Scripts/angular/Controllers/MembershipController.js"></script>
+    <script type="text/javascript" src="/Scripts/angular/Controllers/TasksControllers.js"></script>
+    <script type="text/javascript" src="/Scripts/angular/Core/AuthRequestInterceptor.js"></script>
+    <script type="text/javascript" src="/Scripts/angular/Module/UserProfile.js"></script>
+    <script type="text/javascript" src="/Scripts/angular/Services/LoginService.js"></script>
+    <script type="text/javascript" src="/Scripts/angular/Services/TaskService.js"></script>
+
+
+
+</body>
+</html>

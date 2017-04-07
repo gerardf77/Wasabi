@@ -1,0 +1,26 @@
+﻿@*<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div ng-controller="logincontroller as vm" class="navbar-header">
+            <form ng-hide="vm.isLoggedIn()" class="navbar-form navbar-right">
+
+            </form>
+            <h3 ng-show="vm.isLoggedIn()">
+                <span>{{vm.userEmail}}</span>
+                <input type="button" class="btn" value="logoff" ng-click="vm.logout()" />
+            </h3>
+        </div>
+    </div>
+</nav>
+<div ng-controller="logincontroller as vm" class="container">
+    <div ng-if="vm.isLoggedIn()">
+        <div ng-include="'app/product/productListView.html"></div>
+    </div>
+    <div ui-view></div>
+</div>*@
+<div class="container">
+    <div class="row top-buffer">
+        <div class="col-xs-8 col-xs-offset-2">
+            <div ui-view></div>
+        </div>
+    </div>
+</div>

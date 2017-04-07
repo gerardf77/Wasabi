@@ -1,0 +1,61 @@
+﻿<h2>Tasks</h2>
+
+<!-- Form Starts Here -->
+<form name="taskForm" class="form-horizontal" role="form">
+    <div class="form-group" ng-class="{ 'has-error' : taskForm.Message.$invalid && taskForm.Message.$pristine }">
+        <textarea ng-model="message" class="form-control" name="message" placeholder="Enter your task here" required></textarea>
+        <span ng-show="taskForm.message.$invalid && !taskForm.message.$pristine" class="help-block">Enter a valid task.</span>
+
+        <input type="hidden" ng-model="TaskId" class="form-control" id="TaskId">
+        <input type="hidden" ng-model="Location.Longtitude" class="form-control" id="Longtitude">
+        <input type="hidden" ng-model="Location.Latitude" class="form-control" id="Latitude">
+        <input type="hidden" ng-model="ServerValidationSummary" name="ServerValidationSummary" id="ServerValidationSummary" />
+    </div>
+
+    <div class="form-group form-group-right">
+        <button class="btn btn-default pull-right" type="button" ng-click="CancelUpdate()" ng-show="isUpdating">
+            <span class="glyphicon glyphicon-remove"></span> Cancel
+        </button>
+        <button class="btn btn-primary pull-right" type="submit" ng-click="Save(taskForm)">
+            <span ng-class="isUpdating ? 'glyphicon glyphicon-ok' : 'glyphicon glyphicon-plus'"></span> {{labelTaskAction}}
+        </button>
+    </div>
+
+    <div class="form-group form-group-left" ng-class="{ 'has-error' : taskForm.ServerValidationSummary.$invalid }">
+        <div ng-show="taskForm.ServerValidationSummary.$invalid" class="help-block">
+            <p>{{ServerErrors}}</p>
+        </div>
+    </div>
+    <!-- /input-group -->
+</form>
+<hr />
+<!-- Form Ends Here -->
+<!-- Task List Starts Here -->
+<ul class="list-group" ng-show="tasks.length > 0">
+    <li class="list-group-item clearfix task-list-item" ng-repeat="item in tasks" ng-class="{disabled: item.IsCompleted}">
+        <p class="lead">{{item.Message}}</p><p class="hidden">{{item.TaskId}}</p>
+        <p class="hidden">{{item.Location.Latitude}}</p>
+        <p class="hidden">{{item.Location.Longtitude}}</p>
+        <div>
+            <span class="pull-right">
+                <button class="btn btn-default btn-xs">
+                    <span class="glyphicon glyphicon-pencil"
+                          ng-click="editTask($index)"></span>
+                </button>
+                <button class="btn btn-primary btn-xs" ng-show="!item.IsCompleted">
+                    <span class="glyphicon glyphicon-ok"
+                          ng-click="CompleteTask($index)"></span>
+                </button>
+                <button class="btn btn-primary btn-xs" ng-show="item.IsCompleted">
+                    <span class="glyphicon glyphicon-repeat"
+                          ng-click="UncompleteTask($index)"></span>
+                </button>
+                <button class="btn btn-danger btn-xs">
+                    <span class="glyphicon glyphicon-remove"
+                          ng-click="Deletetask($index)"></span>
+                </button>
+            </span>
+        </div>
+    </li>
+</ul>
+<!-- Task List Ends Here -->

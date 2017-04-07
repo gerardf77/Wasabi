@@ -1,0 +1,27 @@
+﻿        <!-- Task List Starts Here -->
+<ul class="list-group" ng-show="tasks.length > 0">
+    <li class="list-group-item clearfix" ng-repeat="task in tasks" ng-class="{disabled: task.IsCompleted}">
+        <p class="lead">{{task.Message}}</p>
+        <div>
+            <span class="pull-right">
+                <button class="btn btn-default btn-xs">
+                    <span class="glyphicon glyphicon-pencil"
+                          ng-click="editTask($index)"></span>
+                </button>
+                <button class="btn btn-primary btn-xs" ng-show="!task.IsCompleted">
+                    <span class="glyphicon glyphicon-ok"
+                          ng-click="completeTask($index)"></span>
+                </button>
+                <button class="btn btn-primary btn-xs" ng-show="task.IsCompleted">
+                    <span class="glyphicon glyphicon-repeat"
+                          ng-click="uncompleteTask($index)"></span>
+                </button>
+                <button class="btn btn-danger btn-xs">
+                    <span class="glyphicon glyphicon-remove"
+                          ng-click="deleteTask($index)"></span>
+                </button>
+            </span>
+        </div>
+    </li>
+</ul>
+<!-- Task List Ends Here -->

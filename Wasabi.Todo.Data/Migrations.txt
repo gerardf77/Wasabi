@@ -1,0 +1,16 @@
+﻿Migration history
+-------------------
+
+// enable migrations on Repository project
+enable-migrations -ProjectName:Wasabi.Todo.Data -MigrationsDirectory:Migrations
+add-migration InitialCreate -ProjectName:Wasabi.Todo.Data
+update-database -ProjectName:Wasabi.Todo.Data -verbose
+
+// enable migrations on Identity project
+enable-migrations -ProjectName:Wasabi.Todo.Web -MigrationsDirectory:Migrations
+add-migration InitialCreate -ProjectName:Wasabi.Todo.Web
+update-database -ProjectName:Wasabi.Todo.Web -verbose
+
+// rollback
+update-database -ProjectName:Wasabi.Todo.Data -TargetMigration:"201701030922328_InitialCreate" -verbose
+
